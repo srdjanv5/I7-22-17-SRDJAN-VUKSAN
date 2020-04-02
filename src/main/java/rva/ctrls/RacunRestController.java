@@ -64,7 +64,7 @@ public class RacunRestController {
     return racunRepository.findAllByKlijent_BrojLk(data);
   }
 
-  @ApiOperation(value = "Br¡se klijenta iz baze podataka ciji je id vrednost prosledjena kao path varijabla")
+  @ApiOperation(value = "Brise racun iz baze podataka ciji je id vrednost prosledjena kao path varijabla")
   @CrossOrigin
   @DeleteMapping("racun/{id}")
   public ResponseEntity<Racun> deleteRacun(@PathVariable ("id") Integer id) {
@@ -77,7 +77,7 @@ public class RacunRestController {
   // insert
   @PostMapping("racun")
   @CrossOrigin
-  @ApiOperation(value = "Upisuje klijenta u bazu podataka")
+  @ApiOperation(value = "Upisuje racun u bazu podataka")
   public ResponseEntity<Racun> insertRacun(@RequestBody racunInputDto data) {
     if (!racunRepository.existsById(data.getId())) {
       Klijent klijent = klijentRepository.getOne(data.getKlijent_id());
@@ -95,7 +95,7 @@ public class RacunRestController {
   // update
   @CrossOrigin
   @PutMapping("racun")
-  @ApiOperation(value = "Modifikuje postojeceg klijenta u bazi podataka")
+  @ApiOperation(value = "Modifikuje postojeci racun u bazi podataka")
   public ResponseEntity<Racun> updateRacun(@RequestBody Racun racun) {
     if (!racunRepository.existsById(racun.getId()))
       return new ResponseEntity<>(HttpStatus.NO_CONTENT);

@@ -29,31 +29,31 @@ public class KreditRestController {
   @Autowired
   private JdbcTemplate jdbcTemplate;
 
-  @ApiOperation(value = "Vraca kolekciju svih klijenata iz baze podataka")
+  @ApiOperation(value = "Vraca kolekciju svih kredita iz baze podataka")
   @CrossOrigin
   @GetMapping("kredit")
   public Collection<Kredit> getTypes() {
     return kreditRepository.findAll();
   }
 
-  @ApiOperation(value = "Vraca klijenta iz baze podataka ciji je id vrednost prosledjena kao path varijabla")
+  @ApiOperation(value = "Vraca kredita iz baze podataka ciji je id vrednost prosledjena kao path varijabla")
   @GetMapping("kredit/{id}")
   public Kredit getType(@PathVariable("id") Integer id) {
     return kreditRepository.getOne(id);
   }
 
-  @ApiOperation(value = "Vraca klijenta iz baze podataka ciji je id vrednost prosledjena kao path varijabla")
+  @ApiOperation(value = "Vraca kredit iz baze podataka ciji je klijent id  vrednost prosledjena kao path varijabla")
   @GetMapping("kredit/klijent/{broj_lk}")
   public Kredit getByKlijent(@PathVariable("broj_lk") Integer broj_lk) {
 
    Klijent klijent = klijentRepository.findKlijentByBrojLk(broj_lk);
-   Kredit kreda =  klijent.getKredit();
-   return  kreda;
+   Kredit kredit =  klijent.getKredit();
+   return  kredit;
   }
 
 
 
-  @ApiOperation(value = "Br¡se klijenta iz baze podataka ciji je id vrednost prosledjena kao path varijabla")
+  @ApiOperation(value = "Brise kredit iz baze podataka ciji je id vrednost prosledjena kao path varijabla")
   @CrossOrigin
   @DeleteMapping("kredit/{id}")
   public ResponseEntity<Kredit> deleteType(@PathVariable ("id") Integer id) {
@@ -68,7 +68,7 @@ public class KreditRestController {
   // insert
   @PostMapping("kredit")
   @CrossOrigin
-  @ApiOperation(value = "Upisuje klijenta u bazu podataka")
+  @ApiOperation(value = "Upisuje kredit u bazu podataka")
   public ResponseEntity<Kredit> insertType(@RequestBody kreditInputDto data) {
       Klijent klijent = klijentRepository.getOne(data.getKlijent_id());
       if(klijent.getKredit() == null){
@@ -87,7 +87,7 @@ public class KreditRestController {
   // update
   @CrossOrigin
   @PutMapping("kredit")
-  @ApiOperation(value = "Modifikuje postojeceg klijenta u bazi podataka")
+  @ApiOperation(value = "Modifikuje postojeci kredit u bazi podataka")
   public ResponseEntity<Kredit> updateType(@RequestBody Kredit kredit) {
     if (!kreditRepository.existsById(kredit.getId()))
       return new ResponseEntity<>(HttpStatus.NO_CONTENT);

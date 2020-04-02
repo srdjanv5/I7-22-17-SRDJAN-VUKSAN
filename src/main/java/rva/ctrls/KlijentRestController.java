@@ -54,7 +54,7 @@ public class KlijentRestController {
 		return klijentRepository.getOne(id);
 	}
 
-	@ApiOperation(value = "Vraca kolekciju svih klijenata iz baze podataka koji u imenu sadrze string prosledjen kao path varijabla")
+	@ApiOperation(value = "Vraca klijenta iz baze podataka koji u imenu sadrzi string prosledjen kao path varijabla")
   @CrossOrigin
 	@GetMapping("klijent/lk/{broj_lk}")
 	public Klijent getKlijentByBrojLk(@PathVariable ("broj_lk") Integer data) {
@@ -62,7 +62,7 @@ public class KlijentRestController {
     return klijent;
 	}
 
-	@ApiOperation(value = "Br¡se klijenta iz baze podataka ciji je id vrednost prosledjena kao path varijabla")
+	@ApiOperation(value = "Brise klijenta iz baze podataka ciji je id vrednost prosledjena kao path varijabla")
 	@CrossOrigin
 	@DeleteMapping("klijent/{id}")
 	public ResponseEntity<Klijent> deleteKlijent(@PathVariable ("id") Integer id) {

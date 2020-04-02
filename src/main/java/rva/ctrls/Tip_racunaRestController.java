@@ -23,25 +23,25 @@ public class Tip_racunaRestController {
   private JdbcTemplate jdbcTemplate;
 
   @CrossOrigin
-  @ApiOperation(value = "Vraca kolekciju svih klijenata iz baze podataka")
+  @ApiOperation(value = "Vraca kolekciju svih tipova racuna iz baze podataka")
   @GetMapping("tip_racuna")
   public Collection<Tip_racuna> getTypes() {
     return tip_racunaRepository.findAll();
   }
 
-  @ApiOperation(value = "Vraca klijenta iz baze podataka ciji je id vrednost prosledjena kao path varijabla")
+  @ApiOperation(value = "Vraca tip rcuna iz baze podataka ciji je id vrednost prosledjena kao path varijabla")
   @GetMapping("tip_racuna/{id}")
   public Tip_racuna getType(@PathVariable("id") Integer id) {
     return tip_racunaRepository.getOne(id);
   }
 
-  @ApiOperation(value = "Vraca kolekciju svih klijenata iz baze podataka koji u imenu sadrze string prosledjen kao path varijabla")
+  @ApiOperation(value = "Vraca tip racuna iz baze podataka koji u imenu sadrzi string prosledjen kao path varijabla")
   @GetMapping("tip_racuna/{naziv}")
   public Collection<Tip_racuna> getTypeByName(@PathVariable("naziv") String naziv) {
     return tip_racunaRepository.findByNaziv(naziv);
   }
 
-  @ApiOperation(value = "Br¡se klijenta iz baze podataka ciji je id vrednost prosledjena kao path varijabla")
+  @ApiOperation(value = "Brise tip racuna iz baze podataka ciji je id vrednost prosledjena kao path varijabla")
   @CrossOrigin
   @DeleteMapping("tip_racuna/{id}")
   public ResponseEntity<Tip_racuna> deleteType(@PathVariable("id") Integer id) {
@@ -56,7 +56,7 @@ public class Tip_racunaRestController {
   // insert
   @PostMapping("tip_racuna")
   @CrossOrigin
-  @ApiOperation(value = "Upisuje klijenta u bazu podataka")
+  @ApiOperation(value = "Upisuje tip racuna u bazu podataka")
   public ResponseEntity<Tip_racuna> insertType(@RequestBody Tip_racuna tip_racuna) {
     System.out.println(tip_racuna.getId());
     if (!tip_racunaRepository.existsById(tip_racuna.getId())) {
@@ -69,7 +69,7 @@ public class Tip_racunaRestController {
   // update
   @CrossOrigin
   @PutMapping("tip_racuna")
-  @ApiOperation(value = "Modifikuje postojeceg klijenta u bazi podataka")
+  @ApiOperation(value = "Modifikuje postojeci tip racuna u bazi podataka")
   public ResponseEntity<Tip_racuna> updateType(@RequestBody Tip_racuna tip_racuna) {
     if (!tip_racunaRepository.existsById(tip_racuna.getId()))
       return new ResponseEntity<>(HttpStatus.NO_CONTENT);

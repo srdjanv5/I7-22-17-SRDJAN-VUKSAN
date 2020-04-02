@@ -28,7 +28,7 @@ public class Swagger {
 							"Razvoj višeslojnih aplikacija", 
 							"1.0",
 							"",
-							new Contact("Marko Bojkic", "https://github.com/markobojkic", "marko.bojkic@uns.ac.rs"),
+							new Contact("Srdjan Vuksan", "https://github.com/srdjanv5", "srdjanvuksan@gmail.com"),
 							"",
 							"");
 	}
